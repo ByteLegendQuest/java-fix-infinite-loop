@@ -46,7 +46,7 @@ public class Challenge {
         if (thirdDigitIsSameAsFirstOrSecond) {
             do {
                 thirdDigit = randomNumberBetween(0, 9);
-                firstDigitIsSameAsSecondOrThird = (firstDigit == secondDigit) || (firstDigit == thirdDigit);
+                thirdDigitIsSameAsFirstOrSecond = (thirdDigit == firstDigit) || (thirdDigit == secondDigit);
             } while (thirdDigitIsSameAsFirstOrSecond);
         }
 
