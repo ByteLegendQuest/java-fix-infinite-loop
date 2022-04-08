@@ -18,35 +18,13 @@ public class Challenge {
      * number are the same.
      */
     public static String generateRandomSecretNumber() {
-        int firstDigit = randomNumberBetween(1, 9);
-        int secondDigit = randomNumberBetween(0, 9);
-        int thirdDigit = randomNumberBetween(0, 9);
-
-        boolean firstDigitIsSameAsSecondOrThird =
-                (firstDigit == secondDigit) || (firstDigit == thirdDigit);
-        boolean secondDigitIsSameAsFirstOrThird =
-                (secondDigit == firstDigit) || (secondDigit == thirdDigit);
-        boolean thirdDigitIsSameAsFirstOrSecond =
-                (thirdDigit == firstDigit) || (thirdDigit == secondDigit);
-
-        if (firstDigitIsSameAsSecondOrThird) {
-            do {
-                firstDigit = randomNumberBetween(1, 9);
-            } while (firstDigitIsSameAsSecondOrThird);
+        while (true) {
+            int firstDigit = randomNumberBetween(1, 9);
+            int secondDigit = randomNumberBetween(0, 9);
+            int thirdDigit = randomNumberBetween(0, 9);
+            if (firstDigit != secondDigit && firstDigit != thirdDigit && secondDigit != thirdDigit) {
+                return Integer.toString(firstDigit) + secondDigit + thirdDigit;
+            }
         }
-
-        if (secondDigitIsSameAsFirstOrThird) {
-            do {
-                secondDigit = randomNumberBetween(0, 9);
-            } while (secondDigitIsSameAsFirstOrThird);
-        }
-
-        if (thirdDigitIsSameAsFirstOrSecond) {
-            do {
-                thirdDigit = randomNumberBetween(0, 9);
-            } while (thirdDigitIsSameAsFirstOrSecond);
-        }
-
-        return firstDigit + "" + secondDigit + "" + thirdDigit;
     }
 }
