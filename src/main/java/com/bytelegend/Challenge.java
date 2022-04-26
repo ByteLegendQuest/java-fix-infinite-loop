@@ -46,7 +46,6 @@ public class Challenge {
                 thirdDigit = randomNumberBetween(0, 9);
             } while (thirdDigitIsSameAsFirstOrSecond);
         }
-
         return firstDigit + "" + secondDigit + "" + thirdDigit;
     }
 }
