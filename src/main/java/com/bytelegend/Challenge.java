@@ -18,18 +18,35 @@ public class Challenge {
      * number are the same.
      */
     public static String generateRandomSecretNumber() {
-        int[] result = new int[]{randomNumberBetween(1, 9), randomNumberBetween(0, 9), randomNumberBetween(0, 9)};
-        deduplication(result);
-        return result[0] + "" + result[1] + "" + result[2];
-    }
+        int firstDigit = randomNumberBetween(1, 9);
+        int secondDigit = randomNumberBetween(0, 9);
+        int thirdDigit = randomNumberBetween(0, 9);
 
-    private static void deduplication(int[] ints) {
-        if (ints[0] == ints[1]) {
-            ints[1] = randomNumberBetween(0, 9);
-            deduplication(ints);
-        } else if (ints[0] == ints[2] || ints[1] == ints[2]) {
-            ints[2] = randomNumberBetween(0, 9);
-            deduplication(ints);
+        boolean firstDigitIsSameAsSecondOrThird =
+                (firstDigit == secondDigit) || (firstDigit == thirdDigit);
+        boolean secondDigitIsSameAsFirstOrThird =
+                (secondDigit == firstDigit) || (secondDigit == thirdDigit);
+        boolean thirdDigitIsSameAsFirstOrSecond =
+                (thirdDigit == firstDigit) || (thirdDigit == secondDigit);
+
+        if (firstDigitIsSameAsSecondOrThird) {
+            do {
+                firstDigit = randomNumberBetween(1, 9);
+            } while (firstDigitIsSameAsSecondOrThird);
         }
+
+        if (secondDigitIsSameAsFirstOrThird) {
+            do {
+                secondDigit = randomNumberBetween(0, 9);
+            } while (secondDigitIsSameAsFirstOrThird);
+        }
+
+        if (thirdDigitIsSameAsFirstOrSecond) {
+            do {
+                thirdDigit = randomNumberBetween(0, 9);
+            } while (thirdDigitIsSameAsFirstOrSecond);
+        }
+
+        return firstDigit + "" + secondDigit + "" + thirdDigit;
     }
 }
