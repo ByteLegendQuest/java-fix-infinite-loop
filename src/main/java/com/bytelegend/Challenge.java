@@ -17,34 +17,32 @@ public class Challenge {
      * `generateRandomSecretNumber()` method returns a random integer, and none of the digits of the
      * number are the same.
      */
+
+    private static boolean digitComparator(int digit1, int digit2, int digit3) {
+        return digit1 == digit2 || digit1 == digit3;
+    }
+    
     public static String generateRandomSecretNumber() {
         int firstDigit = randomNumberBetween(1, 9);
         int secondDigit = randomNumberBetween(0, 9);
         int thirdDigit = randomNumberBetween(0, 9);
 
-        boolean firstDigitIsSameAsSecondOrThird =
-                (firstDigit == secondDigit) || (firstDigit == thirdDigit);
-        boolean secondDigitIsSameAsFirstOrThird =
-                (secondDigit == firstDigit) || (secondDigit == thirdDigit);
-        boolean thirdDigitIsSameAsFirstOrSecond =
-                (thirdDigit == firstDigit) || (thirdDigit == secondDigit);
-
-        if (firstDigitIsSameAsSecondOrThird) {
+        if (digitComparator(firstDigit, secondDigit, thirdDigit)) {
             do {
                 firstDigit = randomNumberBetween(1, 9);
-            } while (firstDigitIsSameAsSecondOrThird);
+            } while (digitComparator(firstDigit, secondDigit, thirdDigit));
         }
 
-        if (secondDigitIsSameAsFirstOrThird) {
+        if (digitComparator(secondDigit, firstDigit, thirdDigit)) {
             do {
                 secondDigit = randomNumberBetween(0, 9);
-            } while (secondDigitIsSameAsFirstOrThird);
+            } while (digitComparator(secondDigit, firstDigit, thirdDigit));
         }
 
-        if (thirdDigitIsSameAsFirstOrSecond) {
+        if (digitComparator(thirdDigit, firstDigit, secondDigit)) {
             do {
                 thirdDigit = randomNumberBetween(0, 9);
-            } while (thirdDigitIsSameAsFirstOrSecond);
+            } while (digitComparator(thirdDigit, firstDigit, secondDigit));
         }
 
         return firstDigit + "" + secondDigit + "" + thirdDigit;
