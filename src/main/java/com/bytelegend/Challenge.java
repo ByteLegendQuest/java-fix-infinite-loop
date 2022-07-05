@@ -33,8 +33,9 @@ public class Challenge {
         }
 
         if (thirdDigit == firstDigit) {
+            int third;
             do {
-                int third = randomNumberBetween(0, 9);
+                third = randomNumberBetween(0, 9);
             } while (third != firstDigit && third != secondDigit);
             thirdDigit = third;
         }
