@@ -17,36 +17,36 @@ public class Challenge {
      * `generateRandomSecretNumber()` method returns a random integer, and none of the digits of the
      * number are the same.
      */
-
-    public static boolean digitComparator(int a, int b, int c) {
-        return a == b || a == c;
-    }
-
     public static String generateRandomSecretNumber() {
         int firstDigit = randomNumberBetween(1, 9);
         int secondDigit = randomNumberBetween(0, 9);
         int thirdDigit = randomNumberBetween(0, 9);
 
-        if (digitComparator(firstDigit, secondDigit, thirdDigit)) {
+        boolean firstDigitIsSameAsSecondOrThird =
+                (firstDigit == secondDigit) || (firstDigit == thirdDigit);
+        boolean secondDigitIsSameAsFirstOrThird =
+                (secondDigit == firstDigit) || (secondDigit == thirdDigit);
+        boolean thirdDigitIsSameAsFirstOrSecond =
+                (thirdDigit == firstDigit) || (thirdDigit == secondDigit);
+
+        if (firstDigitIsSameAsSecondOrThird) {
             do {
                 firstDigit = randomNumberBetween(1, 9);
-            }
-            while (digitComparator(firstDigit, secondDigit, thirdDigit));
+            } while (firstDigitIsSameAsSecondOrThird);
         }
 
-        if (digitComparator(secondDigit, firstDigit, thirdDigit)) {
+        if (secondDigitIsSameAsFirstOrThird) {
             do {
-                secondDigit = randomNumberBetween(1, 9);
-            }
-            while (digitComparator(secondDigit, firstDigit, thirdDigit));
+                secondDigit = randomNumberBetween(0, 9);
+            } while (secondDigitIsSameAsFirstOrThird);
         }
 
-        if (digitComparator(thirdDigit, firstDigit, secondDigit)) {
+        if (thirdDigitIsSameAsFirstOrSecond) {
             do {
-                thirdDigit = randomNumberBetween(1, 9);
-            }
-            while (digitComparator(thirdDigit, firstDigit, secondDigit));
+                thirdDigit = randomNumberBetween(0, 9);
+            } while (thirdDigitIsSameAsFirstOrSecond);
         }
+
         return firstDigit + "" + secondDigit + "" + thirdDigit;
     }
 }
