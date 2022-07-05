@@ -33,20 +33,19 @@ public class Challenge {
             do {
                 firstDigit = randomNumberBetween(1, 9);
             } while (firstDigitIsSameAsSecondOrThird);
-        }
 
-        if (secondDigitIsSameAsFirstOrThird) {
-            do {
-                secondDigit = randomNumberBetween(0, 9);
-            } while (secondDigitIsSameAsFirstOrThird);
-        }
+            if (secondDigitIsSameAsFirstOrThird) {
+                do {
+                    secondDigit = randomNumberBetween(0, 9);
+                } while (secondDigitIsSameAsFirstOrThird);
 
-        if (thirdDigitIsSameAsFirstOrSecond) {
-            do {
-                thirdDigit = randomNumberBetween(0, 9);
-            } while (thirdDigitIsSameAsFirstOrSecond);
+                if (thirdDigitIsSameAsFirstOrSecond) {
+                    do {
+                        thirdDigit = randomNumberBetween(0, 9);
+                    } while (thirdDigitIsSameAsFirstOrSecond);
+                }
+            }
         }
-
         return firstDigit + "" + secondDigit + "" + thirdDigit;
     }
 }
