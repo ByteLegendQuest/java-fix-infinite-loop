@@ -27,7 +27,7 @@ public class Challenge {
         boolean secondDigitIsSameAsFirstOrThird =
                 (secondDigit == firstDigit) || (secondDigit == thirdDigit);
         boolean thirdDigitIsSameAsFirstOrSecond =
-                (thirdDigit == firstDigit) || (thirdDigit == secondDigit);w
+                (thirdDigit == firstDigit) || (thirdDigit == secondDigit);
 
         if (secondDigitIsSameAsFirstOrThird) {
             do {
