@@ -29,10 +29,16 @@ public class Challenge {
         boolean thirdDigitIsSameAsFirstOrSecond =
                 (thirdDigit == firstDigit) || (thirdDigit == secondDigit);
 
-        while (firstDigitIsSameAsSecondOrThird || secondDigitIsSameAsFirstOrThird || thirdDigitIsSameAsFirstOrSecond) {
-            firstDigit = randomNumberBetween(1, 9);
-            secondDigit = randomNumberBetween(0, 9);
-            thirdDigit = randomNumberBetween(0, 9);
+        if (secondDigitIsSameAsFirstOrThird) {
+            do {
+                secondDigit = randomNumberBetween(0, 9);
+            } while (secondDigitIsSameAsFirstOrThird);
+        }
+
+        if (thirdDigitIsSameAsFirstOrSecond) {
+            do {
+                thirdDigit = randomNumberBetween(0, 9);
+            } while (thirdDigitIsSameAsFirstOrSecond);
         }
 
         return firstDigit + "" + secondDigit + "" + thirdDigit;
