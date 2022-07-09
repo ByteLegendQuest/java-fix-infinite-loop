@@ -18,28 +18,22 @@ public class Challenge {
      * number are the same.
      */
     public static String generateRandomSecretNumber() {
-        int firstDigit = randomNumberBetween(1, 9);
-        int secondDigit = randomNumberBetween(0, 9);
-        int thirdDigit = randomNumberBetween(0, 9);
+        String digits = "0123456789";
+        long num = 0;
+        for (int i = 0; i < 3; i++) {
+            int d = (int) (Math.random() * digits.length());
+            // make certain first digit is not a 0.
+            // otherwise, number will only have `ndigits - 1` digits.
+            if (d == 0 && i == 0) {
+                i--;
+                continue;
+            }
+            // convert character to an int and "append" to the num.
+            num = num * 10 + digits.charAt(d) - '0';
 
-        boolean secondDigitIsSameAsFirstOrThird =
-                (secondDigit == firstDigit) || (secondDigit == thirdDigit);
-
-
-        if (secondDigitIsSameAsFirstOrThird) {
-            do {
-                secondDigit = randomNumberBetween(0, 9);
-            } while (secondDigitIsSameAsFirstOrThird);
+            // effectively delete the just used digit from the string.
+            digits = digits.substring(0, d) + digits.substring(d + 1);
         }
-
-        if (thirdDigit == firstDigit) {
-            int third;
-            do {
-                third = randomNumberBetween(0, 9);
-            } while (third != firstDigit && third != secondDigit);
-            thirdDigit = third;
-        }
-
-        return firstDigit + "" + secondDigit + "" + thirdDigit;
+        return num;
     }
 }
