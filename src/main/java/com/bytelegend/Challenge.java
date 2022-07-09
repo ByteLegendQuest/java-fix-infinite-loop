@@ -34,6 +34,6 @@ public class Challenge {
             // effectively delete the just used digit from the string.
             digits = digits.substring(0, d) + digits.substring(d + 1);
         }
-        return num;
+        return Long.toString(num);
     }
 }
