@@ -22,22 +22,29 @@ public class Challenge {
         int secondDigit = randomNumberBetween(0, 9);
         int thirdDigit = randomNumberBetween(0, 9);
 
+        boolean firstDigitIsSameAsSecondOrThird =
+                (firstDigit == secondDigit) || (firstDigit == thirdDigit);
         boolean secondDigitIsSameAsFirstOrThird =
                 (secondDigit == firstDigit) || (secondDigit == thirdDigit);
+        boolean thirdDigitIsSameAsFirstOrSecond =
+                (thirdDigit == firstDigit) || (thirdDigit == secondDigit);
+
+        if (firstDigitIsSameAsSecondOrThird) {
+            do {
+                firstDigit = randomNumberBetween(1, 9);
+            } while (firstDigitIsSameAsSecondOrThird);
+        }
 
         if (secondDigitIsSameAsFirstOrThird) {
             do {
                 secondDigit = randomNumberBetween(0, 9);
-            } while ((secondDigit == firstDigit) || (secondDigit == thirdDigit));
+            } while (secondDigitIsSameAsFirstOrThird);
         }
-
-        boolean thirdDigitIsSameAsFirstOrSecond =
-                (thirdDigit == firstDigit) || (thirdDigit == secondDigit);
 
         if (thirdDigitIsSameAsFirstOrSecond) {
             do {
                 thirdDigit = randomNumberBetween(0, 9);
-            } while ((thirdDigit == firstDigit) || (thirdDigit == secondDigit));
+            } while (thirdDigitIsSameAsFirstOrSecond);
         }
 
         return firstDigit + "" + secondDigit + "" + thirdDigit;
