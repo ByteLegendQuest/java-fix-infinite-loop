@@ -31,12 +31,12 @@ public class Challenge {
             } while (firstDigitIsSameAsSecondOrThird);
         }
 
-        boolean secondDigitIsSameAsThird = secondDigit == thirdDigit;
-        if (secondDigitIsSameAsThird) {
+        boolean secondDigitIsSameAsFirstOrThird = secondDigit == thirdDigit;
+        if (secondDigitIsSameAsFirstOrThird) {
             do {
                 secondDigit = randomNumberBetween(0, 9);
-                secondDigitIsSameAsThird = secondDigit == thirdDigit;
-            } while (secondDigitIsSameAsThird);
+                secondDigitIsSameAsFirstOrThird = (secondDigit == firstDigit) || (secondDigit == thirdDigit);
+            } while (secondDigitIsSameAsFirstOrThird);
         }
 
         return firstDigit + "" + secondDigit + "" + thirdDigit;
