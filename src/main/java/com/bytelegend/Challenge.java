@@ -17,7 +17,7 @@ public class Challenge {
      * `generateRandomSecretNumber()` method returns a random integer, and none of the digits of the
      * number are the same.
      */
-   public static String generateRandomSecretNumber() {
+    public static String generateRandomSecretNumber() {
         int firstDigit = randomNumberBetween(1, 9);
         int secondDigit = randomNumberBetween(0, 9);
         int thirdDigit = randomNumberBetween(0, 9);
@@ -32,24 +32,18 @@ public class Challenge {
         if (firstDigitIsSameAsSecondOrThird) {
             do {
                 firstDigit = randomNumberBetween(1, 9);
-                firstDigitIsSameAsSecondOrThird =
-                        (firstDigit == secondDigit) || (firstDigit == thirdDigit);
             } while (firstDigitIsSameAsSecondOrThird);
         }
 
         if (secondDigitIsSameAsFirstOrThird) {
             do {
                 secondDigit = randomNumberBetween(0, 9);
-                secondDigitIsSameAsFirstOrThird =
-                        (secondDigit == firstDigit) || (secondDigit == thirdDigit);
             } while (secondDigitIsSameAsFirstOrThird);
         }
 
         if (thirdDigitIsSameAsFirstOrSecond) {
             do {
                 thirdDigit = randomNumberBetween(0, 9);
-                thirdDigitIsSameAsFirstOrSecond =
-                        (thirdDigit == firstDigit) || (thirdDigit == secondDigit);
             } while (thirdDigitIsSameAsFirstOrSecond);
         }
 
