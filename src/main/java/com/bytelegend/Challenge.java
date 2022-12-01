@@ -18,9 +18,9 @@ public class Challenge {
      * number are the same.
      */
     public static String generateRandomSecretNumber() {
-        int firstDigit = randomNumberBetween(1, 2);
-        int secondDigit = randomNumberBetween(4, 5);
-        int thirdDigit = randomNumberBetween(7, 8);
+        int firstDigit = randomNumberBetween(1, 9);
+        int secondDigit = randomNumberBetween(0, 9);
+        int thirdDigit = randomNumberBetween(0, 9);
 
         boolean firstDigitIsSameAsSecondOrThird =
                 (firstDigit == secondDigit) || (firstDigit == thirdDigit);
