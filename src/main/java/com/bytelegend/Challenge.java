@@ -41,11 +41,7 @@ public class Challenge {
             } while (secondDigitIsSameAsFirstOrThird);
         }
 
-        if (thirdDigitIsSameAsFirstOrSecond) {
-            do {
-                thirdDigit = randomNumberBetween(0, 9);
-            } while (thirdDigitIsSameAsFirstOrSecond);
-        }
+
 
         return firstDigit + "" + secondDigit + "" + thirdDigit;
     }
