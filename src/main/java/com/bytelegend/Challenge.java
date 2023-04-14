@@ -28,7 +28,20 @@ public class Challenge {
                 (secondDigit == firstDigit) || (secondDigit == thirdDigit);
         boolean thirdDigitIsSameAsFirstOrSecond =
                 (thirdDigit == firstDigit) || (thirdDigit == secondDigit);
-
+        while (firstDigitIsSameAsSecondOrThird
+            || secondDigitIsSameAsFirstOrThird
+            || thirdDigitIsSameAsFirstOrSecond) {
+            firstDigit = randomNumberBetween(1, 9);
+            secondDigit = randomNumberBetween(0, 9);
+            thirdDigit = randomNumberBetween(0, 9);
+            firstDigitIsSameAsSecondOrThird =
+                (firstDigit == secondDigit) || (firstDigit == thirdDigit);
+            secondDigitIsSameAsFirstOrThird =
+                (secondDigit == firstDigit) || (secondDigit == thirdDigit);
+            thirdDigitIsSameAsFirstOrSecond =
+                (thirdDigit == firstDigit) || (thirdDigit == secondDigit);
+        }
+        /*
         if (firstDigitIsSameAsSecondOrThird) {
             do {
                 firstDigit = randomNumberBetween(1, 9);
@@ -46,7 +59,7 @@ public class Challenge {
                 thirdDigit = randomNumberBetween(0, 9);
             } while (thirdDigitIsSameAsFirstOrSecond);
         }
-
+        */
         return firstDigit + "" + secondDigit + "" + thirdDigit;
     }
 }
