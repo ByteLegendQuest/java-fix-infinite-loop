@@ -4,9 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Challenge {
     public static void main(String[] args) {
-        for (int i = 0; i < 100; i++) {
-            System.out.println(generateRandomSecretNumber());
-        }
+        System.out.println(generateRandomSecretNumber());
     }
 
     private static int randomNumberBetween(int startInclusive, int endInclusive) {
