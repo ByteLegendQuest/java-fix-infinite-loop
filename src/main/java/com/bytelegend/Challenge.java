@@ -4,7 +4,9 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Challenge {
     public static void main(String[] args) {
-        System.out.println(generateRandomSecretNumber());
+        for (int i = 0; i < 100; i++) {
+            System.out.println(generateRandomSecretNumber());
+        }
     }
 
     private static int randomNumberBetween(int startInclusive, int endInclusive) {
@@ -30,19 +32,25 @@ public class Challenge {
         if (firstDigitIsSameAsSecondOrThird) {
             do {
                 firstDigit = randomNumberBetween(1, 9);
-            } while (firstDigitIsSameAsSecondOrThird || !(secondDigit == thirdDigit));
+                firstDigitIsSameAsSecondOrThird =
+                        (firstDigit == secondDigit) || (firstDigit == thirdDigit);
+            } while (firstDigitIsSameAsSecondOrThird);
         }
 
         if (secondDigitIsSameAsFirstOrThird) {
             do {
                 secondDigit = randomNumberBetween(0, 9);
-            } while (secondDigitIsSameAsFirstOrThird || !(firstDigit == thirdDigit));
+                secondDigitIsSameAsFirstOrThird =
+                        (secondDigit == firstDigit) || (secondDigit == thirdDigit);
+            } while (secondDigitIsSameAsFirstOrThird);
         }
 
         if (thirdDigitIsSameAsFirstOrSecond) {
             do {
                 thirdDigit = randomNumberBetween(0, 9);
-            } while (thirdDigitIsSameAsFirstOrSecond || !(firstDigit == secondDigit));
+                thirdDigitIsSameAsFirstOrSecond =
+                        (thirdDigit == firstDigit) || (thirdDigit == secondDigit);
+            } while (thirdDigitIsSameAsFirstOrSecond);
         }
 
         return firstDigit + "" + secondDigit + "" + thirdDigit;
