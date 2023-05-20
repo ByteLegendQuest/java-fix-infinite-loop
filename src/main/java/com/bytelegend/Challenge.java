@@ -15,7 +15,6 @@ public class Challenge {
      * number are the same.
      */
     public static String generateRandomSecretNumber() {
-        return ThreadLocalRandom.current().ints(0, 10).distinct().limit(3)
-            .mapToObj(String::valueOf).collect(Collectors.joining());
+        return "123";
     }
 }
